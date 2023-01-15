@@ -27,6 +27,7 @@ app.add_middleware(
 
 @app.post("/save")
 async def save_item(item: Input):
+    item = item.text
     print(item)
     keywords = getKeyValues(item)
     sites = getAttraction(keywords)
