@@ -3,10 +3,10 @@ import requests
 
 GoogleSearch.SERP_API_KEY = "344a2272107bc37f6bb8abf4dad08e5b64c50d95144a506a8415377f25e365f9"
 
-def getAttraction(words):
+def getAttraction(keywords[0]):
   # location = keywords[0];
   # need to grab the keyword array from kewords.py
-  location = "toronto"
+  location = keywords[0]
   # keywords[0]
 
   params = {
@@ -24,7 +24,6 @@ def getAttraction(words):
   sights =  [sight.get("title") for sight in results.get("top_sights").get("sights")]
   description = [sight.get("description") for sight in results.get("top_sights").get("sights")]
   links = [sight.get("link") for sight in results.get("top_sights").get("sights")]
- 
   images = [sight.get("thumbnail") for sight in results.get("top_sights").get("sights")]
   # operationLink = links[0]
   # api_key = "344a2272107bc37f6bb8abf4dad08e5b64c50d95144a506a8415377f25e365f9"
@@ -38,13 +37,19 @@ def getAttraction(words):
   # hours = data["hours"]
 
   # print(hours)
-    
-  print(images)
-  return(sights, description, links)
+  destination = []
+  for i in range (len(sights)):
+    listing = {
+        "sights": sights[i],
+        "description": description[i],
+        "links": links[i],
+        "images": images[i],
+    }
+    destination.append(listing)
+
+  return destination
   # return sights
-
-# getAttraction()
-
+  
 # links = 
 # descriptions = 
 # pricing = 
