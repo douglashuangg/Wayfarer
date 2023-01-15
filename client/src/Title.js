@@ -140,7 +140,7 @@ const Title = () => {
               onChange={handleChange}
               value={search}
             ></input>
-            <button onClick={sendData}>Click me</button>
+            <button onClick={sendData}>→</button>
           </div>
         </div>
       )}
