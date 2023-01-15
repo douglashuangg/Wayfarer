@@ -31,8 +31,30 @@ async def save_item(item: Input):
     keywords = getKeyValues(item)
     sites = getAttraction(keywords)
     print(keywords)
-    return item
-
-@app.get("/get-attraction")
-async def root():
-    return {"message": "Hello World"}
+    destinationResults = [keywords[0],[
+    {
+        "name": "CN Tower",
+        "price": 1000,
+        "description": "Cn Tower is 500 m tall.",
+        "url": "https fake"
+    },
+    {
+        "name": "ROM",
+        "price": 2000,
+        "description": "ROM is cool.",
+        "url": "https fake"
+    },
+    {
+        "name": "Centre Island",
+        "price": 20000,
+        "description": "Water surrounds it",
+        "url": "https fake"
+    },
+    {
+        "name": "Casa de Loma",
+        "price": 500,
+        "description": "Go big or go home",
+        "url": "https fake"
+    },
+    ], 1]
+    return destinationResults

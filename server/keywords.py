@@ -89,21 +89,21 @@ def getKeyValues(prompt: str):
                                         "extract the destination from the post:")
 
     tripPrompt = "I want to go to Niagara Falls on Jan 17 to Jan 21."
-    destination = cohereDestinationExtractor.extract(tripPrompt)
+    destination = cohereDestinationExtractor.extract(prompt)
     result.append(destination)
     print(destination)
 
-    tripLength = cohereTimeExtractor.extract(tripPrompt)
+    tripLength = cohereTimeExtractor.extract(prompt)
     print(tripLength)
     result.append(tripLength)
 
 
-    cost = cohereCostExtractor.extract(tripPrompt)
+    cost = cohereCostExtractor.extract(prompt)
     print(cost)
     result.append(cost)
 
 
-    amountOfPeople = coherePeopleExtractor.extract(tripPrompt)
+    amountOfPeople = coherePeopleExtractor.extract(prompt)
     print(amountOfPeople)
     result.append(amountOfPeople)
     return result

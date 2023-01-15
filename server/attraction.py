@@ -44,7 +44,7 @@ def getAttraction():
   # return sights
 
 getAttraction()
-  
+
 # links = 
 # descriptions = 
 # pricing = 

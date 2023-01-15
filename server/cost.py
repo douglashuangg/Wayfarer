@@ -1,24 +1,31 @@
-import requests
-from selenium import webdriver
 from bs4 import BeautifulSoup
-from selenium.webdriver.chrome.option import Options 
+from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
+ 
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument("--headless")
 
+# url = "http://www.example.com/attraction"
+# response = requests.get(url)
+# soup = BeautifulSoup(response.text, "html.parser")
 
-chrome_options = Options()
-chrome_options.add_argument('--headless')
-driver = webdriver.Chrome(options=chrome_options)
-start_url = 'https://www.loblaws.ca/food/fruits-vegetables/c/28000?navid=flyout-L2-fruits-vegetables'
-driver.get(start_url)
-import time
-time.sleep(20)
-page_source = driver.page_source
-print('product-name__item product-name__item--name' in page_source)
+# cost = soup.find("span", class_="attraction-cost").text
+# print(cost)
 
-for (all items existing) in zip(mutliple list)
+def getOperatingHours():
+  text = "ROM Hours July 2"
+  engineeredPrompt = text.replace(" ", "+")
+  url = 'https://www.google.com/search?q=cn+tower+hours+july+2&rlz=1C1CHBF_enCA967CA967&oq=cn+tower+hours+july+2&aqs=chrome..69i57j33i10i160l3j33i22i29i30.2791j0j7&sourceid=chrome&ie=UTF-8'
 
-url = "http://www.example.com/attraction"
-response = requests.get(url)
-soup = BeautifulSoup(response.text, "html.parser")
+  driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=chrome_options)
+  url = "http://www.google.com/search?q=" + engineeredPrompt
+  driver.get(url)
+  soup = BeautifulSoup(driver.page_source, 'html.parser')
 
-cost = soup.find("span", class_="attraction-cost").text
-print(cost)
+  search = soup.find_all('span', class_="TLou0b JjSWRd")
+  operatingHours = search[0].getText()
+  driver.close()
+
+  return operatingHours
+
+getOperatingHours()
