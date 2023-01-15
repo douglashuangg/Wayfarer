@@ -4,6 +4,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
+from keywords import *
+
 
 class Input(BaseModel):
     text: str
@@ -31,4 +33,6 @@ async def root():
 @app.post("/save")
 async def save_item(item: Input):
     print(item)
+    keywords = getKeyValues(item)
+    print(keywords)
     return item
