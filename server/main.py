@@ -35,7 +35,7 @@ async def save_item(item: Input):
     print(item)
     keywords = getKeyValues(item)
     print(keywords)
-    destinationResults = [
+    destinationResults = [keywords[0],[
     {
         "name": "CN Tower",
         "price": 1000,
@@ -60,5 +60,5 @@ async def save_item(item: Input):
         "description": "Go big or go home",
         "url": "https fake"
     },
-    ]
+    ], 1]
     return destinationResults

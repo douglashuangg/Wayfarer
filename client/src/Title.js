@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { TypeAnimation } from "react-type-animation";
 import "./Title.css";
 import axios from "axios";
-
+import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import Loading from "./Loading";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
@@ -47,31 +47,40 @@ const Title = () => {
     updateCharacters(items);
   }
 
+  const test = () => {
+    console.log("it worked sheesh");
+    setCurrDay(currDay + 1);
+  };
+
   const [search, setSearch] = useState("");
   const [isLoading, setLoading] = useState(false);
   const [gotResult, setResult] = useState(false);
   const [itinerary, setItinerary] = useState([
-    {
-      name: "Fortinos",
-      price: 100,
-      description: "The best grocery store in the world",
-      url: "http::fake",
-    },
-    {
-      name: "CN tower",
-      price: 100,
-      description: "poggerssss",
-      url: "http::fake",
-    },
-    {
-      name: "Golf",
-      price: 100,
-      description: "poggerssss",
-      url: "http::fake",
-    },
+    [
+      {
+        name: "Fortinos",
+        price: 100,
+        description: "The best grocery store in the world",
+        url: "http::fake",
+      },
+      {
+        name: "CN tower",
+        price: 100,
+        description: "poggerssss",
+        url: "http::fake",
+      },
+      {
+        name: "Golf",
+        price: 100,
+        description: "poggerssss",
+        url: "http::fake",
+      },
+    ],
   ]);
   const [destination, setDestination] = useState("");
-
+  const [days, setDays] = useState(0);
+  const [currDay, setCurrDay] = useState(0);
+  const [currItinerary, setCurrItinerary] = useState([]);
   const url = "http://127.0.0.1:8000/save";
 
   function sendData() {
@@ -84,8 +93,11 @@ const Title = () => {
       .then((response) => {
         setLoading(false);
         setResult(true);
-        setItinerary(response.data);
-        console.log(response);
+        setItinerary(response.data[1]);
+        setDestination(response.data[0]);
+        setDays(response.data[2] - 1);
+        setCurrDay(0);
+        setCurrItinerary(itinerary[currDay]);
       });
   }
 
@@ -97,7 +109,7 @@ const Title = () => {
   return (
     <>
       {isLoading && <Loading></Loading>}
-      {!isLoading && gotResult && (
+      {!isLoading && !gotResult && (
         <div className="box">
           <div className="title">
             <h1>Wayfarer</h1>
@@ -132,9 +144,18 @@ const Title = () => {
           </div>
         </div>
       )}
-      {!gotResult && (
+      {gotResult && (
         <div className="itinerary">
-          <h1>Your trip to {}</h1>
+          <h2>Your trip to {destination}</h2>
+          <div className="nav">
+            {currDay !== 0 && (
+              <AiOutlineArrowLeft onClick={test} className="btn" />
+            )}
+            <h3>Day {currDay + 1}</h3>
+            {currDay < days && (
+              <AiOutlineArrowRight onClick={test} className="btn" />
+            )}
+          </div>
           <DragDropContext onDragEnd={handleOnDragEnd}>
             <Droppable droppableId="characters" direction="horizontal">
               {(provided) => (
@@ -143,24 +164,26 @@ const Title = () => {
                   {...provided.droppableProps}
                   ref={provided.innerRef}
                 >
-                  {itinerary.map(({ name, price, description, url }, index) => {
-                    return (
-                      <Draggable key={name} draggableId={name} index={index}>
-                        {(provided) => (
-                          <div
-                            className="attraction"
-                            ref={provided.innerRef}
-                            {...provided.draggableProps}
-                            {...provided.dragHandleProps}
-                          >
-                            <h3>{name}</h3>
-                            <p>{description}</p>
-                            <p>${price}</p>
-                          </div>
-                        )}
-                      </Draggable>
-                    );
-                  })}
+                  {currItinerary.map(
+                    ({ name, price, description, url }, index) => {
+                      return (
+                        <Draggable key={name} draggableId={name} index={index}>
+                          {(provided) => (
+                            <div
+                              className="attraction"
+                              ref={provided.innerRef}
+                              {...provided.draggableProps}
+                              {...provided.dragHandleProps}
+                            >
+                              <h3>{name}</h3>
+                              <p>{description}</p>
+                              <p>${price}</p>
+                            </div>
+                          )}
+                        </Draggable>
+                      );
+                    }
+                  )}
                   {provided.placeholder}
                 </div>
               )}

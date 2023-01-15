@@ -72,3 +72,21 @@
   border: 1px solid white;
   width: 15%;
 }
+
+.btn {
+  margin-top: 0;
+  padding-top: 0 force;
+  cursor: pointer;
+}
+
+.nav {
+  display: flex;
+  margin-top: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+h3 {
+  margin-left: 3em;
+  margin-right: 3em;
+}
