@@ -6,6 +6,34 @@ import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import Loading from "./Loading";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
+const finalSpaceCharacters = [
+  {
+    id: "gary",
+    name: "Gary Goodspeed",
+    thumb: "/images/gary.png",
+  },
+  {
+    id: "cato",
+    name: "Little Cato",
+    thumb: "/images/cato.png",
+  },
+  {
+    id: "kvn",
+    name: "KVN",
+    thumb: "/images/kvn.png",
+  },
+  {
+    id: "mooncake",
+    name: "Mooncake",
+    thumb: "/images/mooncake.png",
+  },
+  {
+    id: "quinn",
+    name: "Quinn Ergon",
+    thumb: "/images/quinn.png",
+  },
+];
+
 const Title = () => {
   const [characters, updateCharacters] = useState(finalSpaceCharacters);
 
@@ -116,7 +144,10 @@ const Title = () => {
                   ref={provided.innerRef}
                 >
                   {currItinerary.map(
-                    ({ name, description, links, images, price }, index) => {
+                    (
+                      { name, description, links, image, price, hours },
+                      index
+                    ) => {
                       return (
                         <Draggable key={name} draggableId={name} index={index}>
                           {(provided) => (
@@ -127,8 +158,12 @@ const Title = () => {
                               {...provided.dragHandleProps}
                             >
                               <h3>{name}</h3>
+                              <img src={image}></img>
                               <p>{description}</p>
-                              <p>${price}</p>
+                              <a>{links}</a>
+                              <p>
+                                ${price} - ${price + 10}
+                              </p>
                             </div>
                           )}
                         </Draggable>
