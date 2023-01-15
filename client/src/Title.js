@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { TypeAnimation } from "react-type-animation";
+import "./Title.css";
 
 const Title = () => {
   const [search, setSearch] = useState("");
@@ -34,6 +35,7 @@ const Title = () => {
         </div>
         <div className="searchBox">
           <input
+          className="searchbarname"
             id="search"
             name="search"
             onChange={handleChange}
