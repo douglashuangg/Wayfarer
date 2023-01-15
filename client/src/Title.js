@@ -6,34 +6,6 @@ import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import Loading from "./Loading";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
-const finalSpaceCharacters = [
-  {
-    id: "gary",
-    name: "Gary Goodspeed",
-    thumb: "/images/gary.png",
-  },
-  {
-    id: "cato",
-    name: "Little Cato",
-    thumb: "/images/cato.png",
-  },
-  {
-    id: "kvn",
-    name: "KVN",
-    thumb: "/images/kvn.png",
-  },
-  {
-    id: "mooncake",
-    name: "Mooncake",
-    thumb: "/images/mooncake.png",
-  },
-  {
-    id: "quinn",
-    name: "Quinn Ergon",
-    thumb: "/images/quinn.png",
-  },
-];
-
 const Title = () => {
   const [characters, updateCharacters] = useState(finalSpaceCharacters);
 
@@ -55,28 +27,7 @@ const Title = () => {
   const [search, setSearch] = useState("");
   const [isLoading, setLoading] = useState(false);
   const [gotResult, setResult] = useState(false);
-  const [itinerary, setItinerary] = useState([
-    [
-      {
-        name: "Fortinos",
-        price: 100,
-        description: "The best grocery store in the world",
-        url: "http::fake",
-      },
-      {
-        name: "CN tower",
-        price: 100,
-        description: "poggerssss",
-        url: "http::fake",
-      },
-      {
-        name: "Golf",
-        price: 100,
-        description: "poggerssss",
-        url: "http::fake",
-      },
-    ],
-  ]);
+  const [itinerary, setItinerary] = useState([[]]);
   const [destination, setDestination] = useState("");
   const [days, setDays] = useState(0);
   const [currDay, setCurrDay] = useState(0);
@@ -165,7 +116,7 @@ const Title = () => {
                   ref={provided.innerRef}
                 >
                   {currItinerary.map(
-                    ({ name, price, description, url }, index) => {
+                    ({ name, description, links, images, price }, index) => {
                       return (
                         <Draggable key={name} draggableId={name} index={index}>
                           {(provided) => (

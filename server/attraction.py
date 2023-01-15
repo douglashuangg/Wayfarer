@@ -1,9 +1,10 @@
 from serpapi import GoogleSearch
 import requests
+from price_generator import generate_price
 
 GoogleSearch.SERP_API_KEY = "344a2272107bc37f6bb8abf4dad08e5b64c50d95144a506a8415377f25e365f9"
 
-def getAttraction(keywords[0]):
+def getAttraction(keywords):
   # location = keywords[0];
   # need to grab the keyword array from kewords.py
   location = keywords[0]
@@ -15,7 +16,7 @@ def getAttraction(keywords[0]):
     #change toronto to location after testing
     "location": location,
     "api_key": "344a2272107bc37f6bb8abf4dad08e5b64c50d95144a506a8415377f25e365f9",
-    "num":5
+    "num": 15
     }
 
   search = GoogleSearch(params)
@@ -37,19 +38,48 @@ def getAttraction(keywords[0]):
   # hours = data["hours"]
 
   # print(hours)
+  outer = []
   destination = []
-  for i in range (len(sights)):
+  for i in range (0,5):
+    listing = {
+        "name": sights[i],
+        "description": description[i],
+        "links": links[i],
+        "images": images[i],
+        "price": generate_price()
+    }
+    destination.append(listing)
+
+  # return sights
+  
+  outer.append(destination)
+
+  destination = []
+  for i in range (5,10):
     listing = {
         "sights": sights[i],
         "description": description[i],
         "links": links[i],
         "images": images[i],
+        "price": generate_price()
     }
     destination.append(listing)
 
-  return destination
-  # return sights
-  
+  outer.append(destination)
+  destination = []
+  for i in range (10,15):
+    listing = {
+        "sights": sights[i],
+        "description": description[i],
+        "links": links[i],
+        "images": images[i],
+        "price": generate_price()
+    }
+    destination.append(listing)
+  outer.append(destination)
+
+  return outer
+# print(getAttraction("Toronto"))
 # links = 
 # descriptions = 
 # pricing = 
