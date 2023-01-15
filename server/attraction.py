@@ -16,13 +16,14 @@ def getAttraction(keywords):
     #change toronto to location after testing
     "location": location,
     "api_key": "344a2272107bc37f6bb8abf4dad08e5b64c50d95144a506a8415377f25e365f9",
-    "num": 15
+    "num": 12
     }
 
   search = GoogleSearch(params)
   results = search.get_dict()
   
   sights =  [sight.get("title") for sight in results.get("top_sights").get("sights")]
+  print(len(sights))
   description = [sight.get("description") for sight in results.get("top_sights").get("sights")]
   links = [sight.get("link") for sight in results.get("top_sights").get("sights")]
   images = [sight.get("thumbnail") for sight in results.get("top_sights").get("sights")]
@@ -40,12 +41,12 @@ def getAttraction(keywords):
   # print(hours)
   outer = []
   destination = []
-  for i in range (0,5):
+  for i in range (len(sights)):
     listing = {
         "name": sights[i],
         "description": description[i],
         "links": links[i],
-        "images": images[i],
+        "image": images[i],
         "price": generate_price()
     }
     destination.append(listing)
@@ -54,29 +55,29 @@ def getAttraction(keywords):
   
   outer.append(destination)
 
-  destination = []
-  for i in range (5,10):
-    listing = {
-        "sights": sights[i],
-        "description": description[i],
-        "links": links[i],
-        "images": images[i],
-        "price": generate_price()
-    }
-    destination.append(listing)
+  # destination = []
+  # for i in range (4,8):
+  #   listing = {
+  #       "sights": sights[i],
+  #       "description": description[i],
+  #       "links": links[i],
+  #       "images": images[i],
+  #       "price": generate_price()
+  #   }
+  #   destination.append(listing)
 
-  outer.append(destination)
-  destination = []
-  for i in range (10,15):
-    listing = {
-        "sights": sights[i],
-        "description": description[i],
-        "links": links[i],
-        "images": images[i],
-        "price": generate_price()
-    }
-    destination.append(listing)
-  outer.append(destination)
+  # outer.append(destination)
+  # destination = []
+  # for i in range (8,12):
+  #   listing = {
+  #       "sights": sights[i],
+  #       "description": description[i],
+  #       "links": links[i],
+  #       "images": images[i],
+  #       "price": generate_price()
+  #   }
+  #   destination.append(listing)
+  # outer.append(destination)
 
   return outer
 # print(getAttraction("Toronto"))
