@@ -1,5 +1,12 @@
+from typing import Union
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
+
+
+class Input(BaseModel):
+    text: str
 
 app = FastAPI()
 
@@ -21,6 +28,7 @@ async def root():
     return {"message": "Hello World"}
 
 
-@app.post("/saveTravelInfo")
-async def root():
-    return {"message": "Hello World"}
+@app.post("/save")
+async def save_item(item: Input):
+    print(item)
+    return item
