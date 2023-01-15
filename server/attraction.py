@@ -3,7 +3,7 @@ import requests
 
 GoogleSearch.SERP_API_KEY = "344a2272107bc37f6bb8abf4dad08e5b64c50d95144a506a8415377f25e365f9"
 
-def getAttraction():
+def getAttraction(words):
   # location = keywords[0];
   # need to grab the keyword array from kewords.py
   location = "toronto"
@@ -43,7 +43,7 @@ def getAttraction():
   return(sights, description, links)
   # return sights
 
-getAttraction()
+# getAttraction()
 
 # links = 
 # descriptions = 

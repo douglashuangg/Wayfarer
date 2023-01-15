@@ -3,7 +3,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from keywords import *
-from server.attraction import getAttraction
+from attraction import getAttraction
 
 keywords = []
 
@@ -27,6 +27,7 @@ app.add_middleware(
 
 @app.post("/save")
 async def save_item(item: Input):
+    item = item.text
     print(item)
     keywords = getKeyValues(item)
     sites = getAttraction(keywords)
