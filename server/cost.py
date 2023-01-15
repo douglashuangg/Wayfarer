@@ -14,7 +14,8 @@ chrome_options.add_argument("--headless")
 
 def getOperatingHours(attraction, date):
   days = date.split(" ")
-  text = attraction+"hours"+days[0]
+  text = attraction+" hours "+days[0]
+  print(text)
   engineeredPrompt = text.replace(" ", "+")
   url = 'https://www.google.com/search?q=cn+tower+hours+july+2&rlz=1C1CHBF_enCA967CA967&oq=cn+tower+hours+july+2&aqs=chrome..69i57j33i10i160l3j33i22i29i30.2791j0j7&sourceid=chrome&ie=UTF-8'
 
@@ -24,9 +25,10 @@ def getOperatingHours(attraction, date):
   soup = BeautifulSoup(driver.page_source, 'html.parser')
 
   search = soup.find_all('span', class_="TLou0b JjSWRd")
-  operatingHours = search[0].getText()
+  if search:
+    operatingHours = search[0].getText()
+  else:
+    operatingHours = "Please search online"
   driver.close()
 
   return operatingHours
-
-getOperatingHours()

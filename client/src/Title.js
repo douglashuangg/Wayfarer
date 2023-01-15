@@ -144,10 +144,7 @@ const Title = () => {
                   ref={provided.innerRef}
                 >
                   {currItinerary.map(
-                    (
-                      { name, description, links, image, price, hours },
-                      index
-                    ) => {
+                    ({ name, description, links, images, price }, index) => {
                       return (
                         <Draggable key={name} draggableId={name} index={index}>
                           {(provided) => (
@@ -158,12 +155,9 @@ const Title = () => {
                               {...provided.dragHandleProps}
                             >
                               <h3>{name}</h3>
-                              <img src={image}></img>
                               <p>{description}</p>
-                              <a>{links}</a>
-                              <p>
-                                ${price} - ${price + 10}
-                              </p>
+                              <p>${price}</p>
+                              <p>Hours of operation today: </p>
                             </div>
                           )}
                         </Draggable>
