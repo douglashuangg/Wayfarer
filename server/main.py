@@ -3,7 +3,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from keywords import *
-from server.attraction import getAttraction
+from attraction import getAttraction
 
 keywords = []
 
