@@ -44,23 +44,12 @@
 }
 
 .characters {
-  list-style: none;
   padding-left: 0;
-}
-
-.characters li {
+  width: 100%;
   display: flex;
+  flex-direction: row;
   align-items: center;
-  border: solid 2px #d0d0d0;
-  border-radius: 0.2em;
-  padding: 0.5em 0.8em 0.5em 0.5em;
-  margin-bottom: 1em;
-}
-
-.characters p {
-  max-width: none;
-  font-weight: bold;
-  margin: 0;
+  justify-content: space-around;
 }
 
 .characters-thumb {
@@ -77,4 +66,9 @@
   display: block;
   width: 100%;
   height: auto;
+}
+
+.attraction {
+  border: 1px solid white;
+  width: 15%;
 }

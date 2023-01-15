@@ -50,13 +50,27 @@ const Title = () => {
   const [search, setSearch] = useState("");
   const [isLoading, setLoading] = useState(false);
   const [gotResult, setResult] = useState(false);
-  const [itinerary, setItinerary] = useState(
-    { id: "1", label: "Steve" },
-    { id: "2", label: "Will" },
-    { id: "3", label: "Lucas" },
-    { id: "4", label: "Mike" },
-    { id: "5", label: "Dustin" }
-  );
+  const [itinerary, setItinerary] = useState([
+    {
+      name: "Fortinos",
+      price: 100,
+      description: "The best grocery store in the world",
+      url: "http::fake",
+    },
+    {
+      name: "CN tower",
+      price: 100,
+      description: "poggerssss",
+      url: "http::fake",
+    },
+    {
+      name: "Golf",
+      price: 100,
+      description: "poggerssss",
+      url: "http::fake",
+    },
+  ]);
+  const [destination, setDestination] = useState("");
 
   const url = "http://127.0.0.1:8000/save";
 
@@ -120,34 +134,35 @@ const Title = () => {
       )}
       {!gotResult && (
         <div className="itinerary">
+          <h1>Your trip to {}</h1>
           <DragDropContext onDragEnd={handleOnDragEnd}>
-            <Droppable droppableId="characters">
+            <Droppable droppableId="characters" direction="horizontal">
               {(provided) => (
-                <ul
+                <div
                   className="characters"
                   {...provided.droppableProps}
                   ref={provided.innerRef}
                 >
-                  {characters.map(({ id, name, thumb }, index) => {
+                  {itinerary.map(({ name, price, description, url }, index) => {
                     return (
-                      <Draggable key={id} draggableId={id} index={index}>
+                      <Draggable key={name} draggableId={name} index={index}>
                         {(provided) => (
-                          <li
+                          <div
+                            className="attraction"
                             ref={provided.innerRef}
                             {...provided.draggableProps}
                             {...provided.dragHandleProps}
                           >
-                            <div className="characters-thumb">
-                              <img src={thumb} alt={`${name} Thumb`} />
-                            </div>
-                            <p>{name}</p>
-                          </li>
+                            <h3>{name}</h3>
+                            <p>{description}</p>
+                            <p>${price}</p>
+                          </div>
                         )}
                       </Draggable>
                     );
                   })}
                   {provided.placeholder}
-                </ul>
+                </div>
               )}
             </Droppable>
           </DragDropContext>
