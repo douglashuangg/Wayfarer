@@ -8,17 +8,17 @@
 
 .searchbarname {
   border: 5px solid lightskyblue;
-  appearance: none;
-  background-color: #fff;
-  border-color: #8e8ea0;
-  border-width: 1px;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  padding: 0.5rem 0.75rem;
-  width: 549px;
-  height: 19px;
-  border-radius: 18px;
-  margin: 34px;
+    appearance: none;
+    background-color: #fff;
+    border-color: #8e8ea0;
+    border-width: 1px;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    padding: 0.5rem 0.75rem;
+    width: 549px;
+    height: 19px;
+    border-radius: 18px;
+    margin: 34px;
 }
 
 .itinerary {
@@ -89,4 +89,24 @@
 h3 {
   margin-left: 3em;
   margin-right: 3em;
+}
+
+button {
+  border: 5px solid lightskyblue;
+    appearance: none;
+    background-color: #fff;
+    border-color: #8e8ea0;
+    border-width: 1px;
+    font-size: 2rem;
+    line-height: 1.5rem;
+    width: 100px;
+    height: 36px;
+    border-radius: 18px;
+    margin: 34px;
+    position: relative;
+    top: 5px;
+    padding-bottom: 6px;
+    margin-left: 10px;
+
+
 }
