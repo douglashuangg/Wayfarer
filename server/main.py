@@ -1,11 +1,11 @@
 from typing import Union
-
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-
 from keywords import *
+from server.attraction import getAttraction
 
+keywords = []
 
 class Input(BaseModel):
     text: str
@@ -25,14 +25,14 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
-
-
 @app.post("/save")
 async def save_item(item: Input):
     print(item)
     keywords = getKeyValues(item)
+    sites = getAttraction(keywords)
     print(keywords)
     return item
+
+@app.get("/get-attraction")
+async def root():
+    return {"message": "Hello World"}
