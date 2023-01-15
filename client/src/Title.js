@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { TypeAnimation } from "react-type-animation";
+import "./Title.css";
 import axios from "axios";
 
 import Loading from "./Loading";
@@ -60,6 +61,7 @@ const Title = () => {
           </div>
           <div className="searchBox">
             <input
+              className="searchbarname"
               id="search"
               name="search"
               onChange={handleChange}
