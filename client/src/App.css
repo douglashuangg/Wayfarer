@@ -14,7 +14,7 @@ body {
   font-family: "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url("../public/waves2.png");
+  background-image: url("/waves2.png");
 }
 
 @media (prefers-reduced-motion: no-preference) {
