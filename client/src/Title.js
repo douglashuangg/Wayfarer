@@ -1,9 +1,22 @@
+import { OpenAIApiAxiosParamCreator } from "openai";
 import React, { useState } from "react";
 import { TypeAnimation } from "react-type-animation";
+import axios from "axios";
 
 const Title = () => {
   const [search, setSearch] = useState("");
-
+  const url = "http://127.0.0.1:8000/save";
+  function sendData() {
+    axios
+      .post(url, {
+        title: "Hello World",
+        text: "Plan a trip to Niagara Falls",
+      })
+      .then((response) => {
+        console.log(response);
+        console.log("hello");
+      });
+  }
   const handleChange = (e) => {
     setSearch(e.target.value);
   };
@@ -39,6 +52,7 @@ const Title = () => {
             onChange={handleChange}
             value={search}
           ></input>
+          <button onClick={sendData}>Click me</button>
         </div>
       </div>
     </>
