@@ -3,10 +3,14 @@ import { TypeAnimation } from "react-type-animation";
 
 const Title = () => {
   const [search, setSearch] = useState("");
+  const [isLoading, setLoading] = useState(false);
+  const [gotResult, setResult] = useState(false);
 
   const handleChange = (e) => {
     setSearch(e.target.value);
   };
+
+  const handleSubmit = (e) => {};
 
   return (
     <>
