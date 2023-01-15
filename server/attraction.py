@@ -1,6 +1,8 @@
 from serpapi import GoogleSearch
 import requests
 from price_generator import generate_price
+from cost import getOperatingHours
+
 
 GoogleSearch.SERP_API_KEY = "344a2272107bc37f6bb8abf4dad08e5b64c50d95144a506a8415377f25e365f9"
 
@@ -46,8 +48,9 @@ def getAttraction(keywords):
         "name": sights[i],
         "description": description[i],
         "links": links[i],
-        "image": images[i],
-        "price": generate_price()
+        "images": images[i],
+        "price": generate_price(),
+        "hours": getOperatingHours(sights[i], keywords[1])
     }
     destination.append(listing)
 
