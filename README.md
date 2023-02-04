@@ -1,5 +1,11 @@
 # Wayfarer
 
-Wayfarer is a trip planning technology that automates the trip planning procedure based on the user's input and preferences. It takes into account budget, timeline, weather conditions, and ideal travel destinations near the area rated by tourists.
+## Problem Statement ❓
+- Trip planning is hard. Let's automate it!
 
-Use AI to trip plan.
+## Functionality 🚗
+- Just tell us your destination, budget, amount of people or any information related to your trip and we'll plan your trip according to your preferences
+- Utilizes SerpAPI to search Google for the destinations in the city and web scrape that data
+- Used Co:here to extract the preferences from the sentence to search Google with
+- Utilized Selenium to web scrape JavaScript rendered web pages for information like operating hours
+- Utilized React to create drag-and-drop functionality
