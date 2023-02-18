@@ -9,3 +9,12 @@
 - Used Co:here to extract the preferences from the sentence to search Google with
 - Utilized Selenium to web scrape JavaScript rendered web pages for information like operating hours
 - Utilized React to create drag-and-drop functionality
+
+## Gallery
+Landing Page:
+
+![image](https://user-images.githubusercontent.com/74084786/219827997-63b34fca-23dc-4e3b-afcf-1731fe3ba90a.png)
+
+Itinerary for one day:
+
+![image](https://user-images.githubusercontent.com/74084786/219828021-ac74d245-4791-41e7-9479-a58f6b8b3685.png)
